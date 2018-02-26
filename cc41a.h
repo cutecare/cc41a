@@ -17,7 +17,7 @@ class CC41A {
   public:
 	  CC41A(int rxPin = 3, int txPin = 4, int resetPin = 5, long baud = 9600);
 	  void configure(const char * bleName);
-	  void setData(unsigned int minor = 0, unsigned int major = 0);
+	  void setData(unsigned int minor = 0, unsigned int major = 0, bool autosleep = true);
 	  void major(unsigned int value, bool autosleep = true);
 	  void minor(unsigned int value, bool autosleep = true);
 

@@ -42,7 +42,7 @@ void CC41A::configure(const char * bleName)
 	pinMode(bleRxPin, INPUT);
 }
 
-void CC41A::setData(unsigned int minor = 0, unsigned int major = 0)
+void CC41A::setData(unsigned int minor = 0, unsigned int major = 0, bool autosleep = true)
 {
 	pinMode(bleRxPin, OUTPUT);
 	wakeUpBLE();
