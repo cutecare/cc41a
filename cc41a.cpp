@@ -32,7 +32,7 @@ void CC41A::configure(const char * bleName)
 	sendCommand(&bleSerial, "AT+ROLE0");	// slave mode
 	sendCommand(&bleSerial, "AT+TYPE0");	// unsecure, no pin required
 	sendCommand(&bleSerial, "AT+POWE3");	// max RF power
-	sendCommand(&bleSerial, "AT+ADVI9");	// long advertising interval
+	sendCommand(&bleSerial, "AT+ADVI3");	// advertising interval 300ms
 	sendCommand(&bleSerial, "AT+PWRM0");	// auto-sleep
 	sendCommand(&bleSerial, "AT+IBEA1");    // iBeacon mode
 	sendCommand(&bleSerial, "AT+MARJ0x0000");    
