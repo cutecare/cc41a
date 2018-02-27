@@ -35,8 +35,8 @@ void CC41A::configure(const char * bleName)
 	sendCommand(&bleSerial, "AT+ADVI9");	// long advertising interval
 	sendCommand(&bleSerial, "AT+PWRM0");	// auto-sleep
 	sendCommand(&bleSerial, "AT+IBEA1");    // iBeacon mode
-	sendCommand(&bleSerial, "AT+MARJ0");    
-	sendCommand(&bleSerial, "AT+MINO0");
+	sendCommand(&bleSerial, "AT+MARJ0x0000");    
+	sendCommand(&bleSerial, "AT+MINO0x0000");
 	sendCommand(&bleSerial, "AT+RESET");    // sleep
 	
 	pinMode(bleRxPin, INPUT);
@@ -51,9 +51,9 @@ void CC41A::setData(unsigned int minor = 0, unsigned int major = 0, bool autosle
 	bleSerial.begin(bleBaud);
 
 	char buff[32] = "";
-	sprintf(buff, "AT+MARJ%04X", major);
+	sprintf(buff, "AT+MARJ0x%04X", major);
 	sendCommand(&bleSerial, buff);
-	sprintf(buff, "AT+MINO%04X", minor);
+	sprintf(buff, "AT+MINO0x%04X", minor);
 	sendCommand(&bleSerial, buff);
 	if (autosleep) {
 		sendCommand(&bleSerial, "AT+RESET");
@@ -71,7 +71,7 @@ void CC41A::major(unsigned int value, bool autosleep = true)
 	bleSerial.begin(bleBaud);
 
 	char buff[32] = "";
-	sprintf(buff, "AT+MARJ%04X", value);
+	sprintf(buff, "AT+MARJ0x%04X", value);
 	sendCommand(&bleSerial, buff);
 	if (autosleep) {
 		sendCommand(&bleSerial, "AT+RESET");
@@ -89,7 +89,7 @@ void CC41A::minor(unsigned int value, bool autosleep = true)
 	bleSerial.begin(bleBaud);
 
 	char buff[32] = "";
-	sprintf(buff, "AT+MINO%04X", value);
+	sprintf(buff, "AT+MINO0x%04X", value);
 	sendCommand(&bleSerial, buff);
 	if (autosleep) {
 		sendCommand(&bleSerial, "AT+RESET");
