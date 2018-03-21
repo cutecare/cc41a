@@ -27,7 +27,7 @@ class CC41A {
 	  void minor(unsigned int value, bool autosleep = true);
 
   private:
-	  void sendCommand(const SoftwareSerial * bleSerial, const char * data);
+	  void sendCommand(SoftwareSerial * bleSerial, const char * data);
 	  void wakeUpBLE();
 
 	  int bleTxPin = 0;
