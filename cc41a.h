@@ -11,7 +11,12 @@ Author: evgeny.savitsky@gmail.com
 #else
   #include <WProgram.h>
 #endif
-#include <SoftwareSerial.h>
+#ifndef WDTCR
+  #include <SoftwareSerial.h>
+#else
+  #include <SoftSerial.h> 
+  #define SoftwareSerial SoftSerial
+#endif
 
 class CC41A {
   public:
