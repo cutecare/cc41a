@@ -7,7 +7,7 @@ Author: evgeny.savitsky@gmail.com
 /**
  * Constructor
  */
-CC41A::CC41A(int rxPin = 3, int txPin = 4, int resetPin = 5, long baud = 9600)
+CC41A::CC41A(int rxPin, int txPin, int resetPin, long baud)
 {
 	bleRxPin = rxPin;
 	bleTxPin = txPin;
@@ -42,7 +42,7 @@ void CC41A::configure(const char * bleName)
 	pinMode(bleRxPin, INPUT);
 }
 
-void CC41A::setData(unsigned int minor = 0, unsigned int major = 0, bool autosleep = true)
+void CC41A::setData(unsigned int minor, unsigned int major, bool autosleep)
 {
 	pinMode(bleRxPin, OUTPUT);
 	wakeUpBLE();
@@ -62,7 +62,7 @@ void CC41A::setData(unsigned int minor = 0, unsigned int major = 0, bool autosle
 	pinMode(bleRxPin, INPUT);
 }
 
-void CC41A::major(unsigned int value, bool autosleep = true)
+void CC41A::major(unsigned int value, bool autosleep)
 {
 	pinMode(bleRxPin, OUTPUT);
 	wakeUpBLE();
@@ -80,7 +80,7 @@ void CC41A::major(unsigned int value, bool autosleep = true)
 	pinMode(bleRxPin, INPUT);
 }
 
-void CC41A::minor(unsigned int value, bool autosleep = true)
+void CC41A::minor(unsigned int value, bool autosleep)
 {
 	pinMode(bleRxPin, OUTPUT);
 	wakeUpBLE();
@@ -109,7 +109,7 @@ void CC41A::wakeUpBLE()
 	pinMode(bleResetPin, INPUT);
 }
 
-void CC41A::sendCommand(const SoftwareSerial * bleSerial, const char * data) {
+void CC41A::sendCommand(SoftwareSerial * bleSerial, const char * data) {
 	delay(200);
 	bleSerial->println(data);
 }
