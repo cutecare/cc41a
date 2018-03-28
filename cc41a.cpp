@@ -101,15 +101,14 @@ void CC41A::minor(unsigned int value, bool autosleep)
 void CC41A::wakeUpBLE()
 {
 	pinMode(bleResetPin, OUTPUT);
-	delay(100);
 	digitalWrite(bleResetPin, HIGH);
-	delay(100);
+	delay(300);
 	digitalWrite(bleResetPin, LOW);
-	delay(100);
+	delay(300);
 	pinMode(bleResetPin, INPUT);
 }
 
 void CC41A::sendCommand(SoftwareSerial * bleSerial, const char * data) {
-	delay(200);
+	delay(250);
 	bleSerial->println(data);
 }
