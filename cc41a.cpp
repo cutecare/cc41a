@@ -38,8 +38,6 @@ void CC41A::configure(const char * bleName)
 	sendCommand(&bleSerial, "AT+MARJ0x0000");    
 	sendCommand(&bleSerial, "AT+MINO0x0000");
 	sendCommand(&bleSerial, "AT+RESET");    // sleep
-	
-	pinMode(bleRxPin, INPUT);
 }
 
 void CC41A::setData(unsigned int minor, unsigned int major, bool autosleep)
@@ -58,8 +56,6 @@ void CC41A::setData(unsigned int minor, unsigned int major, bool autosleep)
 	if (autosleep) {
 		sendCommand(&bleSerial, "AT+RESET");
 	}
-
-	pinMode(bleRxPin, INPUT);
 }
 
 void CC41A::major(unsigned int value, bool autosleep)
@@ -76,8 +72,6 @@ void CC41A::major(unsigned int value, bool autosleep)
 	if (autosleep) {
 		sendCommand(&bleSerial, "AT+RESET");
 	}
-
-	pinMode(bleRxPin, INPUT);
 }
 
 void CC41A::minor(unsigned int value, bool autosleep)
@@ -94,8 +88,6 @@ void CC41A::minor(unsigned int value, bool autosleep)
 	if (autosleep) {
 		sendCommand(&bleSerial, "AT+RESET");
 	}
-
-	pinMode(bleRxPin, INPUT);
 }
 
 void CC41A::wakeUpBLE()
@@ -105,10 +97,9 @@ void CC41A::wakeUpBLE()
 	delay(300);
 	digitalWrite(bleResetPin, LOW);
 	delay(300);
-	pinMode(bleResetPin, INPUT);
 }
 
 void CC41A::sendCommand(SoftwareSerial * bleSerial, const char * data) {
-	delay(250);
+	delay(300);
 	bleSerial->println(data);
 }
