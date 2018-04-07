@@ -94,9 +94,11 @@ void CC41A::wakeUpBLE()
 {
 	pinMode(bleResetPin, OUTPUT);
 	digitalWrite(bleResetPin, HIGH);
-	delay(300);
+	delay(100);
 	digitalWrite(bleResetPin, LOW);
-	delay(300);
+	delay(100);
+	digitalWrite(bleResetPin, HIGH);
+	pinMode(bleResetPin, INPUT);
 }
 
 void CC41A::sendCommand(SoftwareSerial * bleSerial, const char * data) {
